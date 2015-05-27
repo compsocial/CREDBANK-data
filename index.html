@@ -34,6 +34,18 @@
 <p>The CREDBANK corpus was collected between mid October 2014 and end of February 2015.
 It is a collection of streaming tweets tracked over this period, topics in this tweet stream, topics classified as events or non events, events annotated with credibility ratings. The data is spread across four files. The description of each file along with their location is listed below:</p>
 
+<ul>
+<li>One</li>
+<li>Two</li>
+<li>Three
+
+<ul>
+<li>Nested One</li>
+<li>Nested Two</li>
+</ul>
+</li>
+</ul>
+
 <p><strong>1. Streaming Tweet File</strong> <a href="https://s3-us-west-2.amazonaws.com/credbank/stream_tweets_byTimestamp.data">(Download)</a></p>
 
 <p>This file contains -- tweets seggregated around the timestamp when these were collected. Each line in the file contains 3 fields:</p>
@@ -50,17 +62,47 @@ It is a collection of streaming tweets tracked over this period, topics in this 
 
 <p><strong>2. Topic File (Event/Non-Event)</strong> <a href="https://s3-us-west-2.amazonaws.com/credbank/eventNonEvent_annotations.data">(Download)</a></p>
 
-<p>This file contains -- topics. Each topic is represented by three terms, corresponding to the top three terms returned by running topic modeling (LDA) over the streaming tweets. It contains 3 fields:</p>
+<p>This file contains more than 62,000 topics. Each topic is represented by 3 terms, corresponding to the top three terms returned by running topic modeling (LDA) over the streaming tweets. It contains 3 fields:</p>
 
-<p><code>topic_key</code>: aaaasaa</p>
+<p><code>timespan_key</code>: asasa</p>
 
 <p>A snippet:</p>
 
-<pre><code>topic_key   topic_terms isEvent
-actually_always_something-20141015_161647-20141015_172214   first,play,give 0
+<pre><code>time_key    topic_terms isEvent
+20141024_170629-20141024_181626 louis,ebola,nurse       1
+20141024_170629-20141024_181626 retweet,gain,retweets   0
 </code></pre>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+<p><strong>2. Credibility Annotation File</strong> <a href="https://s3-us-west-2.amazonaws.com/credbank/cred_event_TurkRatings.data">(Download)</a>
+This file contains more than 1300 events and their corresponding credibility ratings and reasons behind the ratings entered by Turkers. It contains 3 fields:</p>
+
+<p><code>topic_key</code> : This is a combination of the time_key and topic_terms from the (2). Topic File. The entries in the Topic File which were marked as event (isEvent = 1) have credibility ratings in the credibility annotation file.</p>
+
+<p><code>topic_terms</code> : A list of 3 terms corresponding to the top 3 terms in each topic.</p>
+
+<p><code>Cred_Ratings</code>: A list of 30 credibility ratings entered by Turkers. The ratings are on based on a:</p>
+
+<ul>
+<li>5-point Likert scale ranging from [-2 to +2]
+
+<ul>
+<li>[-2] Certainly Inaccurate</li>
+<li>[-1] Probably Inaccurate</li>
+<li> [0] Uncertain (Doubtful)</li>
+<li>[+1] Probably Accurate</li>
+<li>[+2] Certainly Accurate</li>
+</ul>
+</li>
+</ul>
+
+<p>A snippet:</p>
+
+<pre><code>topic_key   topic_terms Cred_Ratings    Reasons
+louis_ebola_nurse-20141024_170629-20141024_181626       [u'louis', u'ebola', u'nurse']  ['1', '-1', '2', '-2', '0', '2', '0',....]    ['Nurses union describes the procedures taken by nurse who now has Ebola from treating a patient., .....]
+</code></pre>
+
+<p><strong>3. Searched Tweet File</strong> <a href="https://s3-us-west-2.amazonaws.com/credbank/cred_event_SearchTweets.data">(Download)</a>
+This file contains more than --- tweets </p>
 
 <h3>
 <a id="citation-information" class="anchor" href="#citation-information" aria-hidden="true"><span class="octicon octicon-link"></span></a>Citation Information</h3>
