@@ -34,27 +34,19 @@
 <p>The CREDBANK corpus was collected between mid October 2014 and end of February 2015.
 It is a collection of streaming tweets tracked over this period, topics in this tweet stream, topics classified as events or non events, events annotated with credibility ratings. The data is spread across four files. The description of each file along with their location is listed below:</p>
 
-<ul>
-<li>One</li>
-<li>Two</li>
-<li>Three
-
-<ul>
-<li>Nested One</li>
-<li>Nested Two</li>
-</ul>
-</li>
-</ul>
-
 <p><strong>1. Streaming Tweet File</strong> <a href="https://s3-us-west-2.amazonaws.com/credbank/stream_tweets_byTimestamp.data">(Download)</a></p>
 
-<p>This file contains -- tweets seggregated around the timestamp when these were collected. Each line in the file contains 3 fields:</p>
+<p>This file contains more than 169 million streaming tweets spread across timebins when these were collected. Each line in the file corresponds to a timebin and contains 3 fields:</p>
 
-<p><code>timespan_key</code> : Date and time around which tweets were collected. For example, <code>time_key = 20150114_044623-20150114_061420</code> corresponds to streaming tweets from 14-Jan-2015 (--) to 14-Jan2015 (--).</p>
+<p><code>timespan_key</code> : Time span around which tweets were collected. For example, <code>time_key = 20150114_044623-20150114_061420</code> corresponds to streaming tweets collected around two time windows: 20150114_044623 and 20150114_061420, where
+20150114_061420 is in the format: <code>%Y%m%d_%H%M%S</code>. 
+from 10-Oct-2014 to 26-Feb-2015.</p>
 
-<p><code>tweet_count</code> : Number of tweets in that time bin</p>
+<p><code>tweet_count</code> : Number of tweets in that time bin.</p>
 
 <p><code>ListOf_tweetid_author_createdAt_tuple</code> : A list of tuples, where each tuple contains three fields: <code>tweet ID</code> , <code>tweet author</code> , <code>tweet creation date</code>  </p>
+
+<p>A snippet:</p>
 
 <pre><code>timespan_key        tweet_count     ListOf_tweetid_author_createdAt_tuple 
 20150114_044623-20150114_061420 92255   [('555299882668670977', 'ZaE_BeAtZBsM808', 'Wed Jan 14 09:46:23 +0000 2015'), ('555299882698035203', 'gothebroncos', 'Wed Jan 14 09:46:23 +0000 2015'),....]
@@ -64,7 +56,7 @@ It is a collection of streaming tweets tracked over this period, topics in this 
 
 <p>This file contains more than 62,000 topics. Each topic is represented by 3 terms, corresponding to the top three terms returned by running topic modeling (LDA) over the streaming tweets. It contains 3 fields:</p>
 
-<p><code>timespan_key</code>: asasa</p>
+<p><code>timespan_key</code>: same as in (1). Streaming Tweet File</p>
 
 <p>A snippet:</p>
 
@@ -80,7 +72,7 @@ This file contains more than 1300 events and their corresponding credibility rat
 
 <p><code>topic_terms</code> : A list of 3 terms corresponding to the top 3 terms in each topic.</p>
 
-<p><code>Cred_Ratings</code>: A list of 30 credibility ratings entered by Turkers. The ratings are on based on a:</p>
+<p><code>Cred_Ratings</code>: A list of 30 credibility ratings entered by Turkers. The ratings are based on a:</p>
 
 <ul>
 <li>5-point Likert scale ranging from [-2 to +2]
@@ -102,7 +94,19 @@ louis_ebola_nurse-20141024_170629-20141024_181626       [u'louis', u'ebola', u'n
 </code></pre>
 
 <p><strong>3. Searched Tweet File</strong> <a href="https://s3-us-west-2.amazonaws.com/credbank/cred_event_SearchTweets.data">(Download)</a>
-This file contains more than --- tweets </p>
+This file contains more than 80 million tweets spread across event topics. The tweets are fetched using the Twitter search API. The search query is constructed by taking a boolean AND over all 3 terms of a topic. Each line in the file contains 4 fields:</p>
+
+<p><code>topic_key</code>, <code>topic_terms</code> : same as in (2). Credbility Annotation File</p>
+
+<p><code>tweet_count</code>: Total number of tweets returned by the search API for the topic_terms.</p>
+
+<p><code>ListOf_tweetid_author_createdAt_tuple</code> : A list of tuples, where each tuple contains three fields: <code>tweet ID</code> , <code>tweet author</code> , <code>tweet creation date</code>  </p>
+
+<p>A snippet:</p>
+
+<pre><code>topic_key   topic_terms tweet_count ListOf_tweetid_author_createdAt_tuple
+louis_ebola_nurse-20141024_170629-20141024_181626       [u'louis', u'ebola', u'nurse']  13243 [('ID=522760301435830272', 'AUTHOR=iMhartyz', 'CreatedAt=2014-10-16 14:45:42'), ('ID=522760172872413184', 'AUTHOR=Tino_carter_v', 'CreatedAt=2014-10-16 14:45:12'), ......] 
+</code></pre>
 
 <h3>
 <a id="citation-information" class="anchor" href="#citation-information" aria-hidden="true"><span class="octicon octicon-link"></span></a>Citation Information</h3>
