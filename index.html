@@ -39,10 +39,14 @@ It is a collection of streaming tweets tracked over this period, topics in this 
 <p>This file contains more than 169 million streaming tweets spread across multiple timebins when these were collected. The collection period span from from 10-Oct-2014 to 26-Feb-2015. Each line in the file corresponds to a timebin and contains 3 fields:</p>
 
 <ul>
-<li><p><code>timespan_key</code> : Time span around which tweets were collected. For example, <code>time_key = 20150114_044623-20150114_061420</code> corresponds to streaming tweets collected around two time windows: 20150114_044623 and 20150114_061420, where
-20150114_061420 is in the format: <code>%Y%m%d_%H%M%S</code>. </p></li>
-<li><p><code>tweet_count</code> : Number of tweets in that time bin.</p></li>
-<li><p><code>ListOf_tweetid_author_createdAt_tuple</code> : A list of tuples, where each tuple contains three fields: <code>tweet ID</code> , <code>tweet author</code> , <code>tweet creation date</code>  </p></li>
+<li>
+<code>timespan_key</code> : Time span around which tweets were collected. For example, <code>time_key = 20150114_044623-20150114_061420</code> corresponds to streaming tweets collected around two time windows: 20150114_044623 and 20150114_061420, where
+20150114_061420 is in the format: <code>%Y%m%d_%H%M%S</code>. </li>
+<li>
+<code>tweet_count</code> : Number of tweets in that time bin.</li>
+<li>
+<code>ListOf_tweetid_author_createdAt_tuple</code> : A list of tuples, where each tuple contains three fields: <code>tweet ID</code> , <code>tweet author</code> , <code>tweet creation date</code><br>
+</li>
 </ul>
 
 <p>A snippet:</p>
@@ -75,10 +79,12 @@ It is a collection of streaming tweets tracked over this period, topics in this 
 This file contains more than 1300 events and their corresponding credibility ratings and reasons behind the ratings entered by Turkers. It contains 4 fields:</p>
 
 <ul>
-<li><p><code>topic_key</code> : This is a combination of the time_key and topic_terms from the (2). Topic File. The entries in the Topic File which were marked as event (isEvent = 1) have credibility ratings in the credibility annotation file.</p></li>
-<li><p><code>topic_terms</code> : A list of 3 terms corresponding to the top 3 terms in each topic.</p></li>
 <li>
-<p><code>Cred_Ratings</code>: A list of 30 credibility ratings entered by Turkers. The ratings are based on a 5-point Likert scale ranging from [-2 to +2]:</p>
+<code>topic_key</code> : This is a combination of the time_key and topic_terms from the (2). Topic File. The entries in the Topic File which were marked as event (isEvent = 1) have credibility ratings in the credibility annotation file.</li>
+<li>
+<code>topic_terms</code> : A list of 3 terms corresponding to the top 3 terms in each topic.</li>
+<li>
+<code>Cred_Ratings</code>: A list of 30 credibility ratings entered by Turkers. The ratings are based on a 5-point Likert scale ranging from [-2 to +2]:
 
 <ul>
 <li>[-2] Certainly Inaccurate</li>
@@ -104,9 +110,13 @@ This file contains more than 80 million tweets spread across event topics. The t
 <ul>
 <li>
 <code>topic_key</code> : same as in (2). Credbility Annotation File</li>
-<li><p><code>topic_terms</code> : same as in (2). Credbility Annotation File</p></li>
-<li><p><code>tweet_count</code>: Total number of tweets returned by the search API for the topic_terms.</p></li>
-<li><p><code>ListOf_tweetid_author_createdAt_tuple</code> : A list of tuples, where each tuple contains three fields: <code>tweet ID</code> , <code>tweet author</code> , <code>tweet creation date</code>  </p></li>
+<li>
+<code>topic_terms</code> : same as in (2). Credbility Annotation File</li>
+<li>
+<code>tweet_count</code>: Total number of tweets returned by the search API for the topic_terms.</li>
+<li>
+<code>ListOf_tweetid_author_createdAt_tuple</code> : A list of tuples, where each tuple contains three fields: <code>tweet ID</code> , <code>tweet author</code> , <code>tweet creation date</code><br>
+</li>
 </ul>
 
 <p>A snippet:</p>
