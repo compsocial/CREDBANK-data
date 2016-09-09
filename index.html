@@ -7,7 +7,7 @@
 
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/github-light.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="viewport" content="width=device-width">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -28,13 +28,27 @@
         </ul>
       </header>
       <section>
-        <h3>
-<a id="data-description" class="anchor" href="#data-description" aria-hidden="true"><span class="octicon octicon-link"></span></a>Data Description</h3>
+        <h2>
+<a id="downloading-the-data-using-s3" class="anchor" href="#downloading-the-data-using-s3" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Downloading the Data using S3</h2>
+
+<p>You will need to use AWS CLI and configure it to use your AWS account credentials. 
+Note that you will be charged a small data transfer fee by AWS.</p>
+
+<p>To download a data file (e.g., stream_tweets_byTimestamp.data) to the current folder, you would do this:</p>
+
+<pre><code>aws s3 cp s3://credbank/stream_tweets_byTimestamp.data .
+</code></pre>
+
+<h2>
+<a id="data-description" class="anchor" href="#data-description" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Data Description</h2>
 
 <p>The CREDBANK corpus was collected between mid October 2014 and end of February 2015.
 It is a collection of streaming tweets tracked over this period, topics in this tweet stream, topics classified as events or non events, events annotated with credibility ratings. The data is spread across four files. The description of each file along with their location is listed below:</p>
 
-<p><strong>1. Streaming Tweet File</strong> <a href="https://s3-us-west-2.amazonaws.com/credbank/stream_tweets_byTimestamp.data">(Download)</a></p>
+<h3>
+<a id="1-streaming-tweet-file" class="anchor" href="#1-streaming-tweet-file" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>1. Streaming Tweet File</h3>
+
+<p><strong>S3 Location:</strong> <code>s3://credbank/stream_tweets_byTimestamp.data</code></p>
 
 <p>This file contains more than 169 million streaming tweets spread across multiple timebins when these were collected. The collection period span from  10-Oct-2014 to 26-Feb-2015. Each line in the file corresponds to a timebin and contains 3 fields:</p>
 
@@ -55,7 +69,10 @@ It is a collection of streaming tweets tracked over this period, topics in this 
 20150114_044623-20150114_061420 92255   [('555299882668670977', 'ZaE_BeAtZBsM808', 'Wed Jan 14 09:46:23 +0000 2015'), ('555299882698035203', 'gothebroncos', 'Wed Jan 14 09:46:23 +0000 2015'),....]
 </code></pre>
 
-<p><strong>2. Topic File (Event/Non-Event)</strong> <a href="https://s3-us-west-2.amazonaws.com/credbank/eventNonEvent_annotations.data">(Download)</a></p>
+<h3>
+<a id="2-topic-file-eventnon-event" class="anchor" href="#2-topic-file-eventnon-event" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2. Topic File (Event/Non-Event)</h3>
+
+<p><strong>S3 Location:</strong> <code>s3://credbank/eventNonEvent_annotations.data</code></p>
 
 <p>This file contains more than 62,000 topics. Each topic is represented by 3 terms, corresponding to the top three terms returned by running topic modeling (LDA) over the streaming tweets. It contains 3 fields:</p>
 
@@ -75,8 +92,12 @@ It is a collection of streaming tweets tracked over this period, topics in this 
 20141024_170629-20141024_181626 retweet,gain,retweets   0
 </code></pre>
 
-<p><strong>3. Credibility Annotation File</strong> <a href="https://s3-us-west-2.amazonaws.com/credbank/cred_event_TurkRatings.data">(Download)</a>
-This file contains more than 1300 events and their corresponding credibility ratings and reasons behind the ratings entered by Turkers. It contains 4 fields:</p>
+<h3>
+<a id="3-credibility-annotation-file" class="anchor" href="#3-credibility-annotation-file" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>3. Credibility Annotation File</h3>
+
+<p><strong>S3 Location:</strong> <code>s3://credbank/cred_event_TurkRatings.data</code></p>
+
+<p>This file contains more than 1300 events and their corresponding credibility ratings and reasons behind the ratings entered by Turkers. It contains 4 fields:</p>
 
 <ul>
 <li>
@@ -104,8 +125,12 @@ This file contains more than 1300 events and their corresponding credibility rat
 louis_ebola_nurse-20141024_170629-20141024_181626       [u'louis', u'ebola', u'nurse']  ['1', '-1', '2', '-2', '0', '2', '0',....]    ['Nurses union describes the procedures taken by nurse who now has Ebola from treating a patient., .....]
 </code></pre>
 
-<p><strong>4. Searched Tweet File</strong> <a href="https://s3-us-west-2.amazonaws.com/credbank/cred_event_SearchTweets.data">(Download)</a>
-This file contains more than 80 million tweets spread across event topics. The tweets are fetched using the Twitter search API. The search query is constructed by taking a boolean AND over all 3 terms of a topic. Each line in the file contains 4 fields:</p>
+<h3>
+<a id="4-searched-tweet-file" class="anchor" href="#4-searched-tweet-file" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>4. Searched Tweet File</h3>
+
+<p><strong>S3 Location:</strong> <code>s3://credbank/cred_event_SearchTweets.data</code></p>
+
+<p>This file contains more than 80 million tweets spread across event topics. The tweets are fetched using the Twitter search API. The search query is constructed by taking a boolean AND over all 3 terms of a topic. Each line in the file contains 4 fields:</p>
 
 <ul>
 <li>
@@ -126,7 +151,7 @@ louis_ebola_nurse-20141024_170629-20141024_181626       [u'louis', u'ebola', u'n
 </code></pre>
 
 <h3>
-<a id="citation-information" class="anchor" href="#citation-information" aria-hidden="true"><span class="octicon octicon-link"></span></a>Citation Information</h3>
+<a id="citation-information" class="anchor" href="#citation-information" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Citation Information</h3>
 
 <p>If you use the dataset in your research, please cite the following paper:</p>
 
