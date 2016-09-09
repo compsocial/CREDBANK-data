@@ -52,7 +52,7 @@ time_key	topic_terms	isEvent
 ```
 
 
-### 2. Credibility Annotation File
+### 3. Credibility Annotation File
 
 **S3 Location:** `s3://credbank/cred_event_TurkRatings.data`
 
@@ -76,7 +76,7 @@ topic_key	topic_terms	Cred_Ratings	Reasons
 louis_ebola_nurse-20141024_170629-20141024_181626       [u'louis', u'ebola', u'nurse']  ['1', '-1', '2', '-2', '0', '2', '0',....]    ['Nurses union describes the procedures taken by nurse who now has Ebola from treating a patient., .....]
 ```
 
-### 3. Searched Tweet File
+### 4. Searched Tweet File
 
 **S3 Location:** `s3://credbank/cred_event_SearchTweets.data`
 
