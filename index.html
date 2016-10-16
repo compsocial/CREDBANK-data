@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Credbank-data by compsocial</title>
+    <title>Credbank-data by TanuM</title>
 
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/github-light.css">
@@ -18,26 +18,32 @@
         <h1>Credbank-data</h1>
         <p>Data to accompany the ICWSM 2015 paper &quot;CREDBANK: A Large-scale Social Media Corpus With Associated Credibility Annotations&quot;</p>
 
-        <p class="view"><a href="https://github.com/compsocial/CREDBANK-data">View the Project on GitHub <small>compsocial/CREDBANK-data</small></a></p>
+        <p class="view"><a href="https://github.com/TanuM/CREDBANK-data">View the Project on GitHub <small>TanuM/CREDBANK-data</small></a></p>
 
 
         <ul>
-          <li><a href="https://github.com/compsocial/CREDBANK-data/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/compsocial/CREDBANK-data/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/compsocial/CREDBANK-data">View On <strong>GitHub</strong></a></li>
+          <li><a href="https://github.com/TanuM/CREDBANK-data/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/TanuM/CREDBANK-data/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/TanuM/CREDBANK-data">View On <strong>GitHub</strong></a></li>
         </ul>
       </header>
       <section>
         <h2>
 <a id="downloading-the-data-using-s3" class="anchor" href="#downloading-the-data-using-s3" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Downloading the Data using S3</h2>
 
-<p>You will need to use AWS CLI and configure it to use your AWS account credentials. 
-Note that you will be charged a small data transfer fee by AWS.</p>
+<p>You can use <a href="https://aws.amazon.com/cli/">AWS CLI</a> or the easier <a href="http://s3tools.org/s3cmd">s3cmd</a> to download the data. First configure the tool to use your AWS account credentials and then use the appropriate command to download the s3 links listed below.</p>
 
-<p>To download a data file (e.g., stream_tweets_byTimestamp.data) to the current folder, you would do this:</p>
+<p>To download a data file (e.g., stream_tweets_byTimestamp.data) to the current folder, use the following command:</p>
 
-<pre><code>aws s3 cp s3://credbank/stream_tweets_byTimestamp.data .
+<pre><code>aws s3api get-object --request-payer requester --bucket credbank --key stream_tweets_byTimestamp.data stream_tweets_byTimestamp.data
 </code></pre>
+
+<p>OR</p>
+
+<pre><code>s3cmd get --requester-pays s3://credbank/stream_tweets_byTimestamp.data
+</code></pre>
+
+<p>Note that you will be charged a small data transfer fee by AWS, which can be offset by their <a href="https://aws.amazon.com/free/">free tier</a>.</p>
 
 <h2>
 <a id="data-description" class="anchor" href="#data-description" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Data Description</h2>
@@ -160,7 +166,7 @@ louis_ebola_nurse-20141024_170629-20141024_181626       [u'louis', u'ebola', u'n
 </blockquote>
       </section>
       <footer>
-        <p>This project is maintained by <a href="https://github.com/compsocial">compsocial</a></p>
+        <p>This project is maintained by <a href="https://github.com/TanuM">TanuM</a></p>
         <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
       </footer>
     </div>
