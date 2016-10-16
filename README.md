@@ -2,14 +2,18 @@
 Data to accompany the ICWSM 2015 paper "CREDBANK: A Large-scale Social Media Corpus With Associated Credibility Annotations"
 
 ## Downloading the data
-You will need to use AWS CLI and configure it to use your AWS account credentials. 
-Note that you will be charged a small data transfer fee by AWS.
+You can use <a href="https://aws.amazon.com/cli/">AWS CLI</a> or the easier <a href="http://s3tools.org/s3cmd">s3cmd</a> to download the data. First configure the tool to use your AWS account credentials and then use the appropriate command to download the s3 links listed below.
 
-To download a data file (e.g., stream_tweets_byTimestamp.data) to the current folder, you would do this:
+To download a data file (e.g., stream_tweets_byTimestamp.data) to the current folder, use the following command:
 ```
-aws s3 cp s3://credbank/stream_tweets_byTimestamp.data .
+aws s3api get-object --request-payer requester --bucket credbank --key stream_tweets_byTimestamp.data stream_tweets_byTimestamp.data
+```
+OR
+```
+s3cmd get --requester-pays s3://credbank/stream_tweets_byTimestamp.data
 ```
 
+Note that you will be charged a small data transfer fee by AWS, which can be offset by their <a href="https://aws.amazon.com/free/">free tier</a>.
 
 ## Data Description
 
